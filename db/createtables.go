@@ -24,7 +24,7 @@ func ConnectDB() (*sql.DB, error) {
 		os.Getenv("DB_NAME"),
 		os.Getenv("DB_SSLMODE"),
 	)
-	
+
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		return nil, fmt.Errorf("could not connect to the database: %v", err)
@@ -40,14 +40,13 @@ func ConnectDB() (*sql.DB, error) {
 	return db, nil
 }
 
-
 func CreateTables() {
 	fmt.Printf("Creating events table")
 	db, err := ConnectDB()
 	if err != nil {
 		panic(err)
 	}
-	
+
 	queries := []string{
 		`
 		CREATE TABLE IF NOT EXISTS users (
@@ -118,6 +117,7 @@ func CreateTables() {
 		service_id INT REFERENCES services(service_id),
 		quantity INT NOT NULL,
 		price DECIMAL(10, 2),
+		original_price DECIMAL(10, 2),
 		total DECIMAL(10, 2) GENERATED ALWAYS AS (quantity * price) STORED
 		);
 		`,

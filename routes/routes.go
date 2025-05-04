@@ -27,6 +27,8 @@ func RegisterRoutes(server *gin.Engine) {
 	server.GET("api/cart-items/:id", cart.GetCartItemsByCartID)
 	server.POST("/api/cart-items", cart.CreateCartItem)
 	server.GET("/api/cart/:id", cart.GetCartByID)
+	server.GET("/api/plantdescription/:id", plants.GetPlantDescriptionByID)
+	server.POST("/api/plantdescription", plants.InsertPlantDescription)
 }
 
 // // CORS middleware function definition

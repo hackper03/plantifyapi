@@ -25,12 +25,19 @@ type Plant struct {
 	Description   string    `json:"description,omitempty"`
 	CategoryID    int64     `json:"category_id"`
 	ImageURL      string    `json:"image_url,omitempty"`
-	Rating        float32    `json:"rating,omitempty"`
+	Rating        float32   `json:"rating,omitempty"`
 	Price         float64   `json:"price"`
 	OriginalPrice float64   `json:"original_price"`
 	BadgeText     string    `json:"badge_text,omitempty"`
 	CreatedAt     time.Time `json:"created_at"`
 	UpdatedAt     time.Time `json:"updated_at"`
+}
+
+type PlantDescription struct {
+	PlantID          int64  `json:"plant_id"`
+	Description      string `json:"description,omitempty"`
+	Features         string `json:"features,omitempty"`
+	CareInstructions string `json:"care_instructions,omitempty"`
 }
 
 type PlantInventory struct {
@@ -58,13 +65,13 @@ type Cart struct {
 }
 
 type CartItem struct {
-	CartItemID int64     `json:"cart_item_id"`
-	CartID     int64     `json:"cart_id"`
-	PlantID    int64     `json:"plant_id,omitempty"`
-	ServiceID  int64     `json:"service_id,omitempty"`
-	Quantity   int       `json:"quantity"`
-	Price      float64   `json:"price,omitempty"`
-	Total      float64   `json:"total,omitempty"`
+	CartItemID int64   `json:"cart_item_id"`
+	CartID     int64   `json:"cart_id"`
+	PlantID    int64   `json:"plant_id,omitempty"`
+	ServiceID  int64   `json:"service_id,omitempty"`
+	Quantity   int     `json:"quantity"`
+	Price      float64 `json:"price,omitempty"`
+	Total      float64 `json:"total,omitempty"`
 }
 
 type Order struct {
@@ -78,13 +85,13 @@ type Order struct {
 }
 
 type OrderItem struct {
-	OrderItemID int64     `json:"order_item_id"`
-	OrderID     int64     `json:"order_id"`
-	PlantID     int64     `json:"plant_id,omitempty"`
-	ServiceID   int64     `json:"service_id,omitempty"`
-	Quantity    int       `json:"quantity"`
-	Price       float64   `json:"price,omitempty"`
-	Total       float64   `json:"total,omitempty"`
+	OrderItemID int64   `json:"order_item_id"`
+	OrderID     int64   `json:"order_id"`
+	PlantID     int64   `json:"plant_id,omitempty"`
+	ServiceID   int64   `json:"service_id,omitempty"`
+	Quantity    int     `json:"quantity"`
+	Price       float64 `json:"price,omitempty"`
+	Total       float64 `json:"total,omitempty"`
 }
 
 type Payment struct {
@@ -97,7 +104,7 @@ type Payment struct {
 }
 
 type Login struct {
-	UserID 	  int64		`json:"user_id" db:"user"`
-	Email     string    `json:"email" db:"email" binding:"required"`
-	Password  string    `json:"password" db:"password" binding:"required"`
+	UserID   int64  `json:"user_id" db:"user"`
+	Email    string `json:"email" db:"email" binding:"required"`
+	Password string `json:"password" db:"password" binding:"required"`
 }

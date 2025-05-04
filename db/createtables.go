@@ -83,6 +83,14 @@ func CreateTables() {
 		);
 		`,
 		`
+		CREATE TABLE IF NOT EXISTS plant_description (
+		plant_id INT PRIMARY KEY REFERENCES plants(plant_id),
+		description TEXT,
+		features TEXT,
+		care_instructions TEXT
+		);
+		`,
+		`
 		CREATE TABLE IF NOT EXISTS plant_inventory (
 		inventory_id SERIAL PRIMARY KEY,
 		plant_id INT REFERENCES plants(plant_id),
